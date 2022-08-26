@@ -91,13 +91,10 @@ function displaySearchedLoc(response) {
   let wind = document.querySelector("#wind");
   let date = document.querySelector("#current-date");
   let icon = document.querySelector("#main-icon");
-  celsiusTemperature = Math.round(response.data.main.temp);
-  minCelTemp = Math.round(response.data.main.temp_min);
-  maxCelTemp = Math.round(response.data.main.temp_max);
-  searchedLocTemp.innerHTML = celsiusTemperature;
+  searchedLocTemp.innerHTML = Math.round(response.data.main.temp);
   currentCity.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
-  minTemp.innerHTML = `${minCelTemp}-`;
-  maxTemp.innerHTML = maxCelTemp;
+  minTemp.innerHTML = `${Math.round(response.data.main.temp_min)}-`;
+  maxTemp.innerHTML = Math.round(response.data.main.temp_max);
   skyInfo.innerHTML = response.data.weather[0].main;
   humidity.innerHTML = `${response.data.main.humidity}%`;
   wind.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
@@ -143,38 +140,6 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
-function convertToFar(event) {
-  event.preventDefault();
-  let displayedTemp = document.querySelector("#display-temp");
-  let minTemp = document.querySelector("#min-today");
-  let maxTemp = document.querySelector("#max-today");
-  displayedTemp.innerHTML = Math.round(celsiusTemperature * (9 / 5) + 32);
-  minTemp.innerHTML = `${Math.round(minCelTemp * (9 / 5) + 32)}-`;
-  maxTemp.innerHTML = Math.round(maxCelTemp * (9 / 5) + 32);
-  changeCel.classList.remove("active");
-  changeFar.classList.add("active");
-}
-
-function convertToCel(event) {
-  event.preventDefault();
-  let displayedTemp = document.querySelector("#display-temp");
-  let minTemp = document.querySelector("#min-today");
-  let maxTemp = document.querySelector("#max-today");
-  displayedTemp.innerHTML = celsiusTemperature;
-  minTemp.innerHTML = `${minCelTemp}-`;
-  maxTemp.innerHTML = maxCelTemp;
-  changeFar.classList.remove("active");
-  changeCel.classList.add("active");
-}
-
-let celsiusTemperature = null;
-let minCelTemp = null;
-let maxCelTemp = null;
-let changeFar = document.querySelector("#fahrenheit");
-changeFar.addEventListener("click", convertToFar);
-let changeCel = document.querySelector("#celsius");
-changeCel.addEventListener("click", convertToCel);
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", changeToCurrent);
