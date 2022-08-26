@@ -91,10 +91,13 @@ function displaySearchedLoc(response) {
   let wind = document.querySelector("#wind");
   let date = document.querySelector("#current-date");
   let icon = document.querySelector("#main-icon");
-  searchedLocTemp.innerHTML = Math.round(response.data.main.temp);
+  celsiusTemperature = Math.round(response.data.main.temp);
+  minCelTemp = Math.round(response.data.main.temp_min);
+  maxCelTemp = Math.round(response.data.main.temp_max);
+  searchedLocTemp.innerHTML = celsiusTemperature;
   currentCity.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
-  minTemp.innerHTML = `${Math.round(response.data.main.temp_min)}-`;
-  maxTemp.innerHTML = Math.round(response.data.main.temp_max);
+  minTemp.innerHTML = `${minCelTemp}-`;
+  maxTemp.innerHTML = maxCelTemp;
   skyInfo.innerHTML = response.data.weather[0].main;
   humidity.innerHTML = `${response.data.main.humidity}%`;
   wind.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
@@ -130,7 +133,7 @@ function displayForecast(response) {
     forecastHTML += `<div class="col-4">
                 <div class="card next-days" style="width: 7rem">
                   <div class="card-body">
-                    <h5 class="card-title"><span id="min-forecast-temp">${minTemp}</span> <span id="max-forecast-temp">${maxTemp}</span></h5>
+                    <h5 class="card-title"><span class="min-forecast-temp">${minTemp}</span> <span class="max-forecast-temp">${maxTemp}</span></h5>
                     <div id="small-icon"><img src="${imgSrc}" alt="" id="forecast-icon"/></div>
                     <p class="card-text">${day}</p>
                   </div>

@@ -58,11 +58,11 @@ footer {
   padding-top: 14px;
 }
 #min-today,
-#min-forecast-temp {
+.min-forecast-temp {
   color: #6e7da2;
 }
-#max-forecast-temp {
-  color: #a44a4a;
+.max-forecast-temp {
+  color: #ec6e4c;
 }
 .country {
   font-weight: normal;
@@ -85,7 +85,9 @@ footer {
   text-transform: capitalize;
 }
 #last-up {
-  font-size: 10px;
+  font-size: 9px;
+  color: #6e7da2;
+  text-transform: none;
 }
 
 #new-location {
@@ -130,7 +132,7 @@ footer {
   font-size: 13px;
   font-weight: 600;
   text-align: center;
-  color: #a44a4a;
+  color: #ec6e4c;
 }
 .card-title {
   font-size: 12px;
