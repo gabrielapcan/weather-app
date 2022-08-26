@@ -1,3 +1,13 @@
+function changeToCurrent() {
+  navigator.geolocation.getCurrentPosition(getCurrentPosition);
+}
+
+function getCurrentPosition(position) {
+  let apiKey = "8d1684c8dfd4c7c9e701ecf0706e6732";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(displaySearchedLoc);
+}
+
 function changeDateDisplay(timeObtained) {
   let currentDate = new Date(timeObtained);
   let weekdays = [
@@ -42,9 +52,11 @@ function changeDateDisplay(timeObtained) {
 function changeLocation(event) {
   event.preventDefault();
   let searchedLocation = document.querySelector("#new-location");
-  searchedLocation = searchedLocation.value;
+  searchCity(searchedLocation.value);
+}
+function searchCity(city) {
   let apiKey = "8d1684c8dfd4c7c9e701ecf0706e6732";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchedLocation}&units=metric&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(displaySearchedLoc);
 }
 
@@ -76,15 +88,6 @@ function displaySearchedLoc(response) {
   icon.setAttribute("alt", response.data.weather[0].description);
 }
 
-function changeTo() {
-  navigator.geolocation.getCurrentPosition(getCurrent);
-}
-
-function getCurrent(position) {
-  let apiKey = "8d1684c8dfd4c7c9e701ecf0706e6732";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${apiKey}`;
-  axios.get(apiUrl).then(displaySearchedLoc);
-}
 function convertToFar(event) {
   event.preventDefault();
   let displayedTemp = document.querySelector("#display-temp");
@@ -122,7 +125,9 @@ let changeCel = document.querySelector("#celsius");
 changeCel.addEventListener("click", convertToCel);
 
 let currentLocationButton = document.querySelector("#current-location-button");
-currentLocationButton.addEventListener("click", changeTo);
+currentLocationButton.addEventListener("click", changeToCurrent);
 
-let search = document.querySelector("#submit-button");
-search.addEventListener("click", changeLocation);
+let searchButton = document.querySelector("#submit-button");
+searchButton.addEventListener("click", changeLocation);
+
+searchCity("Porto");
