@@ -16,6 +16,11 @@ h1 {
   font-size: 26px;
   text-align: left;
 }
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 footer {
   font-family: "Space Mono", monospace;
   font-size: 10px;
@@ -38,12 +43,14 @@ footer {
 }
 .unit {
   font-size: 12px;
+  position: relative;
+  top: -12px;
 }
 .country {
   font-weight: normal;
   font-size: 22px;
 }
-.day-hour {
+#current-date {
   font-style: italic;
 }
 .link-to {
@@ -54,12 +61,11 @@ footer {
 }
 .weather-info {
   font-size: 14px;
-  margin-top: 10px;
-}
-.other-info {
-  margin-top: 15px;
+  margin: 10px 0 0 0;
+  padding: 0;
   line-height: 26px;
 }
+
 .next-days {
   margin: 10px;
   background: transparent;
@@ -106,6 +112,12 @@ footer {
   background: #db996c;
   cursor: pointer;
 }
+.current-button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 #current-location-button {
   background: white;
   color: #121435;

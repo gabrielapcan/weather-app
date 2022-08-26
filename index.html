@@ -54,7 +54,7 @@
               </div>
             </form>
           </div>
-          <div class="col-3">
+          <div class="col-3 current-button">
             <button
               type="button"
               class="btn btn-primary mb-2"
@@ -88,18 +88,14 @@
               </div>
             </div>
 
-            <div class="weather-info">
-              <div class="day-hour">
+            <ul class="weather-info">
+              <li>
                 <span id="current-date"></span>
-                <br />
-                Weather:<span id="clouds-clear"></span>
-              </div>
-              <div class="other-info">
-                Humidity: <span id="humidity"></span>
-                <br />
-                Wind: <span id="wind"></span>
-              </div>
-            </div>
+              </li>
+              <li>Weather: <span id="clouds-clear"></span></li>
+              <li>Humidity: <span id="humidity"></span></li>
+              <li>Wind<span id="wind"></span></li>
+            </ul>
           </div>
 
           <div class="col-md-8" id="day-cards">
