@@ -75,7 +75,7 @@ function displaySearchedLoc(response) {
   maxCelTemp = Math.round(response.data.main.temp_max);
   searchedLocTemp.innerHTML = celsiusTemperature;
   currentCity.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
-  minTemp.innerHTML = minCelTemp;
+  minTemp.innerHTML = `${minCelTemp}-`;
   maxTemp.innerHTML = maxCelTemp;
   skyInfo.innerHTML = response.data.weather[0].main;
   humidity.innerHTML = `${response.data.main.humidity}%`;
@@ -88,13 +88,34 @@ function displaySearchedLoc(response) {
   icon.setAttribute("alt", response.data.weather[0].description);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-4">
+                <div class="card next-days" style="width: 7rem">
+                  <div class="card-body">
+                    <h5 class="card-title"><span id="min-forecast-temp">19</span>º <span id="max-forecast-temp">25</span>º</h5>
+                    <img src="" alt="" id="small-icon" />
+                    <p class="card-text">${day}</p>
+                  </div>
+                </div>
+            </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function convertToFar(event) {
   event.preventDefault();
   let displayedTemp = document.querySelector("#display-temp");
   let minTemp = document.querySelector("#min-today");
   let maxTemp = document.querySelector("#max-today");
   displayedTemp.innerHTML = Math.round(celsiusTemperature * (9 / 5) + 32);
-  minTemp.innerHTML = Math.round(minCelTemp * (9 / 5) + 32);
+  minTemp.innerHTML = `${Math.round(minCelTemp * (9 / 5) + 32)}-`;
   maxTemp.innerHTML = Math.round(maxCelTemp * (9 / 5) + 32);
   changeCel.classList.remove("active");
   changeFar.classList.add("active");
@@ -106,7 +127,7 @@ function convertToCel(event) {
   let minTemp = document.querySelector("#min-today");
   let maxTemp = document.querySelector("#max-today");
   displayedTemp.innerHTML = celsiusTemperature;
-  minTemp.innerHTML = minCelTemp;
+  minTemp.innerHTML = `${minCelTemp}-`;
   maxTemp.innerHTML = maxCelTemp;
   changeFar.classList.remove("active");
   changeCel.classList.add("active");
@@ -127,3 +148,5 @@ let searchButton = document.querySelector("#submit-button");
 searchButton.addEventListener("click", changeLocation);
 
 searchCity("Porto");
+
+displayForecast();

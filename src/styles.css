@@ -49,19 +49,24 @@ footer {
 }
 .unit {
   font-size: 12px;
+  position: relative;
+  top: -12px;
 }
 .active {
   color: black;
   cursor: default;
   text-decoration: none;
-  font-size: 24px;
-  font-weight: 300;
+  font-weight: 500;
 }
 .active:hover {
   color: black;
 }
 #min-max-today {
   padding-top: 14px;
+}
+#min-today,
+#min-forecast-temp {
+  color: #6e7da2;
 }
 .country {
   font-weight: normal;
@@ -114,4 +119,27 @@ footer {
 #current-location-button:hover {
   color: #db996c;
   border: 1px solid #db996c;
+}
+
+.next-days {
+  margin: 10px;
+  background: transparent;
+  border: none;
+  padding: 15px 0 0 0;
+}
+.next-days:hover {
+  background-color: #f7f3ff;
+}
+.card-text {
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+.card-title {
+  font-size: 12px;
+  text-align: center;
+}
+.next-days-icon {
+  text-align: center;
+  font-size: 30px;
 }
