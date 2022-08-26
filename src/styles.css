@@ -68,6 +68,9 @@ footer {
 #min-forecast-temp {
   color: #6e7da2;
 }
+#max-forecast-temp {
+  color: #ec6e4c;
+}
 .country {
   font-weight: normal;
   font-size: 22px;
@@ -134,12 +137,14 @@ footer {
   font-size: 13px;
   font-weight: 600;
   text-align: center;
+  color: #ec6e4c;
 }
 .card-title {
   font-size: 12px;
   text-align: center;
 }
-.next-days-icon {
-  text-align: center;
-  font-size: 30px;
+#forecast-icon {
+  width: 70px;
+  display: block;
+  margin: 0 auto;
 }

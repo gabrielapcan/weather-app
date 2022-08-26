@@ -49,6 +49,21 @@ function changeDateDisplay(timeObtained) {
   return `${weekday}, ${month} ${today}, ${hour}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let weekday = weekdays[date.getDay()];
+  return weekday;
+}
+
 function changeLocation(event) {
   event.preventDefault();
   let searchedLocation = document.querySelector("#new-location");
@@ -111,15 +126,15 @@ function displayForecast(response) {
   console.log(newForecastList);
 
   newForecastList.forEach(function (newArray) {
-    let minTemp = Math.round(newArray.main.temp_min);
-    let maxTemp = Math.round(newArray.main.temp_max);
-    let day = newArray.dt;
+    let minTemp = `${Math.round(newArray.main.temp_min)}º`;
+    let maxTemp = `${Math.round(newArray.main.temp_max)}º`;
+    let day = formatDay(newArray.dt);
     let imgSrc = `https://openweathermap.org/img/wn/${newArray.weather[0].icon}@2x.png`;
     forecastHTML += `<div class="col-4">
                 <div class="card next-days" style="width: 7rem">
                   <div class="card-body">
-                    <h5 class="card-title"><span id="min-forecast-temp">${minTemp}</span>º <span id="max-forecast-temp">${maxTemp}</span>º</h5>
-                    <img src="${imgSrc}" alt="" id="small-icon" />
+                    <h5 class="card-title"><span id="min-forecast-temp">${minTemp}</span> <span id="max-forecast-temp">${maxTemp}</span></h5>
+                    <div id="small-icon"><img src="${imgSrc}" alt="" id="forecast-icon"/></div>
                     <p class="card-text">${day}</p>
                   </div>
                 </div>
