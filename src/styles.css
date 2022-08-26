@@ -1,0 +1,115 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+main {
+  padding: 20px 15px;
+  background: none;
+  border: 2px solid #eeeeee;
+  border-radius: 7px;
+  max-width: 700px;
+}
+h1 {
+  font-size: 26px;
+  text-align: left;
+}
+footer {
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  padding: 5px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.container {
+  margin: 20px;
+}
+.current-weather {
+  margin-top: 30px;
+}
+.cloud-sun-icon {
+  color: #fda403;
+  font-size: 60px;
+}
+.location-icon {
+  font-size: 20px;
+  color: #cdd5e0;
+}
+.unit {
+  font-size: 12px;
+}
+.country {
+  font-weight: normal;
+  font-size: 22px;
+}
+.day-hour {
+  font-style: italic;
+}
+.link-to {
+  color: #000;
+}
+.link-to:hover {
+  color: #a44a4a;
+}
+.weather-info {
+  font-size: 14px;
+  margin-top: 10px;
+}
+.other-info {
+  margin-top: 15px;
+  line-height: 26px;
+}
+.next-days {
+  margin: 10px;
+  background: transparent;
+  border: none;
+  padding: 15px 0 0 0;
+}
+.next-days:hover {
+  background-color: rgba(253 164 3 / 0.2);
+  color: #a44a4a;
+}
+.temperature-one,
+.temperature-two,
+.temperature-three,
+.temperature-four,
+.temperature-five,
+.temperature-six {
+  font-size: 14px;
+  text-align: center;
+}
+.day-one,
+.day-two,
+.day-three,
+.day-four,
+.day-five,
+.day-six {
+  font-size: 12px;
+  text-align: center;
+}
+.next-days-icon {
+  text-align: center;
+  font-size: 30px;
+}
+
+#new-location {
+  background: #fff;
+  border-radius: 6px;
+  padding-left: 10px;
+}
+#submit-button {
+  background: #121435;
+  border: #121435;
+}
+#submit-button:hover {
+  background: #a44a4a;
+  cursor: pointer;
+}
+#current-location-button {
+  background: white;
+  color: #121435;
+  border: 1px solid #121435;
+}
+#current-location-button:hover {
+  color: #a44a4a;
+  border: 1px solid #a44a4a;
+}
