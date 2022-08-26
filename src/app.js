@@ -60,6 +60,12 @@ function searchCity(city) {
   axios.get(apiUrl).then(displaySearchedLoc);
 }
 
+function getCoordinates(coordinates) {
+  let apiKey = "8d1684c8dfd4c7c9e701ecf0706e6732";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displaySearchedLoc(response) {
   let searchedLocTemp = document.querySelector("#display-temp");
   let currentCity = document.querySelector("#current-city");
@@ -86,20 +92,34 @@ function displaySearchedLoc(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
+  getCoordinates(response.data.coord);
 }
 
-function displayForecast() {
+function getForecastSmall(list, incr) {
+  let result = [];
+  for (let index = 7; index < list.length; index += incr) {
+    result.push(list[index]);
+  }
+  return result;
+}
+
+function displayForecast(response) {
+  let forecastList = response.data.list;
+  let newForecastList = getForecastSmall(forecastList, 8);
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-4">
+  console.log(newForecastList);
+
+  newForecastList.forEach(function (newArray) {
+    let minTemp = Math.round(newArray.main.temp_min);
+    let maxTemp = Math.round(newArray.main.temp_max);
+    let day = newArray.dt;
+    let imgSrc = `https://openweathermap.org/img/wn/${newArray.weather[0].icon}@2x.png`;
+    forecastHTML += `<div class="col-4">
                 <div class="card next-days" style="width: 7rem">
                   <div class="card-body">
-                    <h5 class="card-title"><span id="min-forecast-temp">19</span>º <span id="max-forecast-temp">25</span>º</h5>
-                    <img src="" alt="" id="small-icon" />
+                    <h5 class="card-title"><span id="min-forecast-temp">${minTemp}</span>º <span id="max-forecast-temp">${maxTemp}</span>º</h5>
+                    <img src="${imgSrc}" alt="" id="small-icon" />
                     <p class="card-text">${day}</p>
                   </div>
                 </div>
@@ -148,5 +168,3 @@ let searchButton = document.querySelector("#submit-button");
 searchButton.addEventListener("click", changeLocation);
 
 searchCity("Porto");
-
-displayForecast();
