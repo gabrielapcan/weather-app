@@ -82,12 +82,14 @@ footer {
   margin: 10px 0 0 0;
   padding: 0;
   line-height: 26px;
-  text-transform: capitalize;
 }
 #last-up {
   font-size: 9px;
   color: #6e7da2;
   text-transform: none;
+}
+#clouds-clear {
+  text-transform: capitalize;
 }
 
 #new-location {
@@ -123,7 +125,7 @@ footer {
 }
 .card-text {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 400;
   text-align: center;
   color: #ec6e4c;
 }

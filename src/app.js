@@ -99,7 +99,7 @@ function displaySearchedLoc(response) {
   currentCity.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   minTemp.innerHTML = `${minCelTemp}-`;
   maxTemp.innerHTML = maxCelTemp;
-  skyInfo.innerHTML = response.data.weather[0].main;
+  skyInfo.innerHTML = response.data.weather[0].description;
   humidity.innerHTML = `${response.data.main.humidity}%`;
   wind.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
   date.innerHTML = changeDateDisplay(response.data.dt * 1000);
@@ -121,7 +121,6 @@ function displayForecast(response) {
   let newForecastList = getForecastSmall(forecastList, 8);
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = `<div class="row">`;
-  console.log(newForecastList);
 
   newForecastList.forEach(function (newArray) {
     let minTemp = `${Math.round(newArray.main.temp_min)}º`;
