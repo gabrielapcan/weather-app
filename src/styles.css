@@ -49,13 +49,13 @@ footer {
 }
 .unit {
   font-size: 12px;
-  position: relative;
-  top: -12px;
 }
 .active {
   color: black;
   cursor: default;
   text-decoration: none;
+  font-size: 24px;
+  font-weight: 300;
 }
 .active:hover {
   color: black;

@@ -91,13 +91,11 @@ function displaySearchedLoc(response) {
 function convertToFar(event) {
   event.preventDefault();
   let displayedTemp = document.querySelector("#display-temp");
-  let intervalUnit = document.querySelector("#interval-unit");
   let minTemp = document.querySelector("#min-today");
   let maxTemp = document.querySelector("#max-today");
   displayedTemp.innerHTML = Math.round(celsiusTemperature * (9 / 5) + 32);
   minTemp.innerHTML = Math.round(minCelTemp * (9 / 5) + 32);
   maxTemp.innerHTML = Math.round(maxCelTemp * (9 / 5) + 32);
-  intervalUnit.innerHTML = `ºF`;
   changeCel.classList.remove("active");
   changeFar.classList.add("active");
 }
@@ -105,13 +103,11 @@ function convertToFar(event) {
 function convertToCel(event) {
   event.preventDefault();
   let displayedTemp = document.querySelector("#display-temp");
-  let intervalUnit = document.querySelector("#interval-unit");
   let minTemp = document.querySelector("#min-today");
   let maxTemp = document.querySelector("#max-today");
   displayedTemp.innerHTML = celsiusTemperature;
   minTemp.innerHTML = minCelTemp;
   maxTemp.innerHTML = maxCelTemp;
-  intervalUnit.innerHTML = `ºC`;
   changeFar.classList.remove("active");
   changeCel.classList.add("active");
 }
