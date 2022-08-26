@@ -52,6 +52,14 @@ footer {
   position: relative;
   top: -12px;
 }
+.active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+.active:hover {
+  color: black;
+}
 #min-max-today {
   padding-top: 14px;
 }

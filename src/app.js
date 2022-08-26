@@ -1,5 +1,3 @@
-// CURRENT TIME
-
 function changeDateDisplay(timeObtained) {
   let currentDate = new Date(timeObtained);
   let weekdays = [
@@ -41,8 +39,6 @@ function changeDateDisplay(timeObtained) {
   return `${weekday}, ${month} ${today}, ${hour}:${minutes}`;
 }
 
-// CHANGE LOCATION TO SEARCHED
-
 function changeLocation(event) {
   event.preventDefault();
   let searchedLocation = document.querySelector("#new-location");
@@ -55,17 +51,20 @@ function changeLocation(event) {
 function displaySearchedLoc(response) {
   let searchedLocTemp = document.querySelector("#display-temp");
   let currentCity = document.querySelector("#current-city");
-  let minmaxTemp = document.querySelector("#min-max-today");
+  let minTemp = document.querySelector("#min-today");
+  let maxTemp = document.querySelector("#max-today");
   let skyInfo = document.querySelector("#clouds-clear");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
   let date = document.querySelector("#current-date");
   let icon = document.querySelector("#main-icon");
-  searchedLocTemp.innerHTML = Math.round(response.data.main.temp);
+  celsiusTemperature = Math.round(response.data.main.temp);
+  minCelTemp = Math.round(response.data.main.temp_min);
+  maxCelTemp = Math.round(response.data.main.temp_max);
+  searchedLocTemp.innerHTML = celsiusTemperature;
   currentCity.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
-  minmaxTemp.innerHTML = `${Math.round(
-    response.data.main.temp_min
-  )}-${Math.round(response.data.main.temp_max)}ºC`;
+  minTemp.innerHTML = minCelTemp;
+  maxTemp.innerHTML = maxCelTemp;
   skyInfo.innerHTML = response.data.weather[0].main;
   humidity.innerHTML = `${response.data.main.humidity}%`;
   wind.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
@@ -77,11 +76,6 @@ function displaySearchedLoc(response) {
   icon.setAttribute("alt", response.data.weather[0].description);
 }
 
-let search = document.querySelector("#submit-button");
-search.addEventListener("click", changeLocation);
-
-// CURRENT LOCATION BUTTON
-
 function changeTo() {
   navigator.geolocation.getCurrentPosition(getCurrent);
 }
@@ -91,22 +85,44 @@ function getCurrent(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(displaySearchedLoc);
 }
+function convertToFar(event) {
+  event.preventDefault();
+  let displayedTemp = document.querySelector("#display-temp");
+  let intervalUnit = document.querySelector("#interval-unit");
+  let minTemp = document.querySelector("#min-today");
+  let maxTemp = document.querySelector("#max-today");
+  displayedTemp.innerHTML = Math.round(celsiusTemperature * (9 / 5) + 32);
+  minTemp.innerHTML = Math.round(minCelTemp * (9 / 5) + 32);
+  maxTemp.innerHTML = Math.round(maxCelTemp * (9 / 5) + 32);
+  intervalUnit.innerHTML = `ºF`;
+  changeCel.classList.remove("active");
+  changeFar.classList.add("active");
+}
+
+function convertToCel(event) {
+  event.preventDefault();
+  let displayedTemp = document.querySelector("#display-temp");
+  let intervalUnit = document.querySelector("#interval-unit");
+  let minTemp = document.querySelector("#min-today");
+  let maxTemp = document.querySelector("#max-today");
+  displayedTemp.innerHTML = celsiusTemperature;
+  minTemp.innerHTML = minCelTemp;
+  maxTemp.innerHTML = maxCelTemp;
+  intervalUnit.innerHTML = `ºC`;
+  changeFar.classList.remove("active");
+  changeCel.classList.add("active");
+}
+
+let celsiusTemperature = null;
+let minCelTemp = null;
+let maxCelTemp = null;
+let changeFar = document.querySelector("#fahrenheit");
+changeFar.addEventListener("click", convertToFar);
+let changeCel = document.querySelector("#celsius");
+changeCel.addEventListener("click", convertToCel);
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", changeTo);
 
-// CELSIUS-FAHRENHEIT
-
-//function convertToFar() {
-// let displayedTemp = document.querySelector("#display-temp");
-//displayedTemp.innerHTML = 66;
-//}
-//let changeFar = document.querySelector("#fahrenheit");
-//changeFar.addEventListener("click", convertToFar);
-
-//function convertToCel() {
-// let displayedTemp = document.querySelector("#display-temp");
-//displayedTemp.innerHTML = 19;
-//}
-//let changeCel = document.querySelector("#celsius");
-//changeCel.addEventListener("click", convertToCel);
+let search = document.querySelector("#submit-button");
+search.addEventListener("click", changeLocation);
