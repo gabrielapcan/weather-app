@@ -72,8 +72,9 @@ function displaySearchedLoc(response) {
   date.innerHTML = changeDateDisplay(response.data.dt * 1000);
   icon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
 
 let search = document.querySelector("#submit-button");
