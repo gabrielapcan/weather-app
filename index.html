@@ -28,11 +28,11 @@
     <div class="container">
       <main>
         <div class="row" id="#search-bar">
-          <div class="col-10">
+          <div class="col-9">
             <form>
               <div class="form-row align-items-center">
                 <div class="row">
-                  <div class="col-10">
+                  <div class="col-9">
                     <input
                       type="text"
                       autocomplete="off"
@@ -41,7 +41,7 @@
                       placeholder="New Location"
                     />
                   </div>
-                  <div class="col-2">
+                  <div class="col-3">
                     <button
                       type="submit"
                       class="btn btn-primary mb-2"
@@ -54,21 +54,19 @@
               </div>
             </form>
           </div>
-          <div class="col-2">
-            <div class="col-2">
-              <button
-                type="button"
-                class="btn btn-primary mb-2"
-                id="current-location-button"
-              >
-                Current
-              </button>
-            </div>
+          <div class="col-3">
+            <button
+              type="button"
+              class="btn btn-primary mb-2"
+              id="current-location-button"
+            >
+              Current
+            </button>
           </div>
         </div>
 
         <div class="row" id="main-section">
-          <div class="col-4">
+          <div class="col-md-4">
             <h1>
               <i class="fa-solid fa-location-dot location-icon"></i>
               <span class="currentCity" id="current-city"></span>
@@ -91,12 +89,12 @@
             </div>
 
             <div class="weather-info">
-              <div class="day-hour" id="current-date">
-                Tuesday Aug 24, 15:00
+              <div class="day-hour">
+                <span id="current-date"></span>
+                <br />
+                Weather:<span id="clouds-clear"></span>
               </div>
               <div class="other-info">
-                <span id="clouds-clear">Clear</span>
-                <br />
                 Humidity: <span id="humidity"></span>
                 <br />
                 Wind: <span id="wind"></span>
@@ -104,7 +102,7 @@
             </div>
           </div>
 
-          <div class="col-8" id="day-cards">
+          <div class="col-md-8" id="day-cards">
             <div class="row">
               <div class="col-4">
                 <div class="card next-days" style="width: 7rem">
