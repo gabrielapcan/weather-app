@@ -91,6 +91,7 @@ function displaySearchedLoc(response) {
   let wind = document.querySelector("#wind");
   let date = document.querySelector("#current-date");
   let icon = document.querySelector("#main-icon");
+  let iconSrc = `images/${response.data.weather[0].icon.replace("n", "d")}.png`;
   celsiusTemperature = Math.round(response.data.main.temp);
   minCelTemp = Math.round(response.data.main.temp_min);
   maxCelTemp = Math.round(response.data.main.temp_max);
@@ -102,10 +103,7 @@ function displaySearchedLoc(response) {
   humidity.innerHTML = `${response.data.main.humidity}%`;
   wind.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
   date.innerHTML = changeDateDisplay(response.data.dt * 1000);
-  icon.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
+  icon.setAttribute("src", iconSrc);
   icon.setAttribute("alt", response.data.weather[0].description);
   getCoordinates(response.data.coord);
 }
@@ -129,7 +127,7 @@ function displayForecast(response) {
     let minTemp = `${Math.round(newArray.main.temp_min)}º`;
     let maxTemp = `${Math.round(newArray.main.temp_max)}º`;
     let day = formatDay(newArray.dt);
-    let imgSrc = `https://openweathermap.org/img/wn/${newArray.weather[0].icon}@2x.png`;
+    let imgSrc = `images/${newArray.weather[0].icon.replace("n", "d")}.png`;
     forecastHTML += `<div class="col-4">
                 <div class="card next-days" style="width: 7rem">
                   <div class="card-body">

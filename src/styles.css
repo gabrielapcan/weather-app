@@ -38,9 +38,9 @@ footer {
 .current-weather {
   margin-top: 30px;
 }
-#sun-image {
+#main-icon {
   display: block;
-  margin: 0 auto;
+  margin: 20px 0 0 5px;
   width: 60px;
 }
 .location-icon {
@@ -103,20 +103,13 @@ footer {
   background: #db996c;
   cursor: pointer;
 }
-.current-button {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
 
 #current-location-button {
-  background: white;
-  color: #121435;
-  border: 1px solid #121435;
+  font-size: 36px;
+  color: #6e7da2;
 }
 #current-location-button:hover {
   color: #db996c;
-  border: 1px solid #db996c;
 }
 
 .next-days {
@@ -139,7 +132,8 @@ footer {
   text-align: center;
 }
 #forecast-icon {
-  width: 70px;
+  width: 50px;
   display: block;
   margin: 0 auto;
+  padding: 5px;
 }
