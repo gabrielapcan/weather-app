@@ -87,39 +87,6 @@ footer {
   font-size: 10px;
 }
 
-.next-days {
-  margin: 10px;
-  background: transparent;
-  border: none;
-  padding: 15px 0 0 0;
-}
-.next-days:hover {
-  background-color: #6e7da2;
-  color: #fcf8f3;
-}
-.temperature-one,
-.temperature-two,
-.temperature-three,
-.temperature-four,
-.temperature-five,
-.temperature-six {
-  font-size: 14px;
-  text-align: center;
-}
-.day-one,
-.day-two,
-.day-three,
-.day-four,
-.day-five,
-.day-six {
-  font-size: 12px;
-  text-align: center;
-}
-.next-days-icon {
-  text-align: center;
-  font-size: 30px;
-}
-
 #new-location {
   background: #fff;
   border-radius: 6px;
