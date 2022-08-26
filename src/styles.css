@@ -1,12 +1,16 @@
 body {
   font-family: "Poppins", sans-serif;
+  background: #aedadd;
 }
 main {
   padding: 20px 15px;
-  background: none;
+  background: white;
   border: 2px solid #eeeeee;
   border-radius: 7px;
   max-width: 700px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 h1 {
   font-size: 26px;
@@ -17,22 +21,20 @@ footer {
   font-size: 10px;
   padding: 5px;
   margin-top: 10px;
-  text-align: left;
+  text-align: center;
 }
 
-.container {
-  margin: 20px;
-}
 .current-weather {
   margin-top: 30px;
 }
-.cloud-sun-icon {
-  color: #fda403;
-  font-size: 60px;
+.sun-image {
+  display: block;
+  margin: 0 auto;
+  width: 60px;
 }
 .location-icon {
   font-size: 20px;
-  color: #cdd5e0;
+  color: #aedadd;
 }
 .unit {
   font-size: 12px;
@@ -65,8 +67,8 @@ footer {
   padding: 15px 0 0 0;
 }
 .next-days:hover {
-  background-color: rgba(253 164 3 / 0.2);
-  color: #a44a4a;
+  background-color: #6e7da2;
+  color: #fcf8f3;
 }
 .temperature-one,
 .temperature-two,
@@ -97,11 +99,11 @@ footer {
   padding-left: 10px;
 }
 #submit-button {
-  background: #121435;
-  border: #121435;
+  background: #6e7da2;
+  border: #6e7da2;
 }
 #submit-button:hover {
-  background: #a44a4a;
+  background: #db996c;
   cursor: pointer;
 }
 #current-location-button {
@@ -110,6 +112,6 @@ footer {
   border: 1px solid #121435;
 }
 #current-location-button:hover {
-  color: #a44a4a;
-  border: 1px solid #a44a4a;
+  color: #db996c;
+  border: 1px solid #db996c;
 }
