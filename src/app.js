@@ -1,42 +1,45 @@
 // CURRENT TIME
 
-let currentDate = new Date();
-console.log(currentDate);
-let weekdays = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let weekday = weekdays[currentDate.getDay()];
+function changeDateDisplay(timeObtained) {
+  let currentDate = new Date(timeObtained);
+  let weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let weekday = weekdays[currentDate.getDay()];
 
-let months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dez",
-];
-let month = months[currentDate.getMonth()];
-let today = currentDate.getDate();
-let hour = currentDate.getHours();
-let minutes = currentDate.getMinutes();
-if (String(minutes).length === 1) {
-  minutes = `0${minutes}`;
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dez",
+  ];
+  let month = months[currentDate.getMonth()];
+  let today = currentDate.getDate();
+  let hour = currentDate.getHours();
+  let minutes = currentDate.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+
+  return `${weekday}, ${month} ${today}, ${hour}:${minutes}`;
 }
-
-let dayTime = document.querySelector("#current-date");
-dayTime.innerHTML = `${weekday}, ${month} ${today}, ${hour}:${minutes}`;
 
 // CHANGE LOCATION TO SEARCHED
 
@@ -56,6 +59,8 @@ function displaySearchedLoc(response) {
   let skyInfo = document.querySelector("#clouds-clear");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
+  let date = document.querySelector("#current-date");
+  let icon = document.querySelector("#main-icon");
   searchedLocTemp.innerHTML = Math.round(response.data.main.temp);
   currentCity.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   minmaxTemp.innerHTML = `${Math.round(
@@ -64,6 +69,11 @@ function displaySearchedLoc(response) {
   skyInfo.innerHTML = response.data.weather[0].main;
   humidity.innerHTML = `${response.data.main.humidity}%`;
   wind.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
+  date.innerHTML = changeDateDisplay(response.data.dt * 1000);
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 let search = document.querySelector("#submit-button");

@@ -74,7 +74,11 @@
 
             <div class="row current-weather">
               <div class="col-5">
-                <img src="images/sun.png" alt="sun" class="sun-image" />
+                <img
+                  src="http://openweathermap.org/img/wn/09d@2x.png"
+                  alt="sun"
+                  id="main-icon"
+                />
               </div>
               <div class="col-7">
                 <h2>
@@ -90,9 +94,10 @@
 
             <ul class="weather-info">
               <li>
-                <span id="current-date"></span>
+                <small id="last-up">Last update: </small
+                ><span id="current-date"></span>
               </li>
-              <li>Weather: <span id="clouds-clear"></span></li>
+              <li>Sky: <span id="clouds-clear"></span></li>
               <li>Humidity: <span id="humidity"></span></li>
               <li>Wind<span id="wind"></span></li>
             </ul>

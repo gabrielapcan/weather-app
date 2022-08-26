@@ -15,6 +15,12 @@ main {
 h1 {
   font-size: 26px;
   text-align: left;
+  position: relative;
+  top: 20px;
+}
+h2 {
+  position: relative;
+  top: 20px;
 }
 li {
   list-style: none;
@@ -32,7 +38,7 @@ footer {
 .current-weather {
   margin-top: 30px;
 }
-.sun-image {
+#sun-image {
   display: block;
   margin: 0 auto;
   width: 60px;
@@ -45,6 +51,9 @@ footer {
   font-size: 12px;
   position: relative;
   top: -12px;
+}
+#min-max-today {
+  padding-top: 14px;
 }
 .country {
   font-weight: normal;
@@ -64,6 +73,10 @@ footer {
   margin: 10px 0 0 0;
   padding: 0;
   line-height: 26px;
+  text-transform: capitalize;
+}
+#last-up {
+  font-size: 10px;
 }
 
 .next-days {
