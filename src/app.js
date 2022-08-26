@@ -40,7 +40,8 @@ dayTime.innerHTML = `${weekday}, ${month} ${today}, ${hour}:${minutes}`;
 
 // CHANGE LOCATION TO SEARCHED
 
-function changeLocation() {
+function changeLocation(event) {
+  event.preventDefault();
   let searchedLocation = document.querySelector("#new-location");
   searchedLocation = searchedLocation.value;
   let apiKey = "8d1684c8dfd4c7c9e701ecf0706e6732";
