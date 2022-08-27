@@ -155,3 +155,11 @@ let searchButton = document.querySelector("#submit-button");
 searchButton.addEventListener("click", changeLocation);
 
 searchCity("Porto");
+
+let themeSwitcher = document.querySelector("#theme-switcher");
+themeSwitcher.onclick = function () {
+  let currentTheme = document.documentElement.getAttribute("data-theme");
+  let switchToTheme = currentTheme === "dark" ? "light" : "dark";
+
+  document.documentElement.setAttribute("data-theme", switchToTheme);
+};
