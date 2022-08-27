@@ -80,7 +80,6 @@ function getCoordinates(coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,hourly&units=metric&appid=${apiKey}`;
   //let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(displayForecast);
-  console.log(apiUrl);
 }
 
 function displaySearchedLoc(response) {
