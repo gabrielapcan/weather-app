@@ -124,9 +124,12 @@ footer {
   line-height: 26px;
 }
 #last-up {
+  display: block;
   font-size: 9px;
   color: var(--last-up-color);
   text-transform: none;
+  line-height: 12px;
+  margin-bottom: 10px;
 }
 #clouds-clear {
   text-transform: capitalize;
