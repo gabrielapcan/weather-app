@@ -76,9 +76,11 @@ function searchCity(city) {
 }
 
 function getCoordinates(coordinates) {
-  let apiKey = "8d1684c8dfd4c7c9e701ecf0706e6732";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
+  let apiKey = "a43564c91a6c605aeb564c9ed02e3858";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,hourly&units=metric&appid=${apiKey}`;
+  //let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(displayForecast);
+  console.log(apiUrl);
 }
 
 function displaySearchedLoc(response) {
@@ -108,26 +110,29 @@ function displaySearchedLoc(response) {
   getCoordinates(response.data.coord);
 }
 
-function getForecastSmall(list, incr) {
-  let result = [];
-  for (let index = 7; index < list.length; index += incr) {
-    result.push(list[index]);
-  }
-  return result;
-}
+// function getForecastSmall(list, incr) {
+//  let result = [];
+//  for (let index = 7; index < list.length; index += incr) {
+//    result.push(list[index]);
+//  }
+//  return result;
+//}
 
 function displayForecast(response) {
-  let forecastList = response.data.list;
-  let newForecastList = getForecastSmall(forecastList, 8);
+  let forecastList = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = `<div class="row">`;
 
-  newForecastList.forEach(function (newArray) {
-    let minTemp = `${Math.round(newArray.main.temp_min)}º`;
-    let maxTemp = `${Math.round(newArray.main.temp_max)}º`;
-    let day = formatDay(newArray.dt);
-    let imgSrc = `images/${newArray.weather[0].icon.replace("n", "d")}.png`;
-    forecastHTML += `<div class="col-4">
+  forecastList.forEach((forecastDay, index) => {
+    if (index > 0 && index < 7) {
+      let minTemp = `${Math.round(forecastDay.temp.min)}º`;
+      let maxTemp = `${Math.round(forecastDay.temp.max)}º`;
+      let day = formatDay(forecastDay.dt);
+      let imgSrc = `images/${forecastDay.weather[0].icon.replace(
+        "n",
+        "d"
+      )}.png`;
+      forecastHTML += `<div class="col-4">
                 <div class="card next-days" style="width: 7rem">
                   <div class="card-body">
                     <h5 class="card-title"><span class="min-forecast-temp">${minTemp}</span> <span class="max-forecast-temp">${maxTemp}</span></h5>
@@ -136,7 +141,9 @@ function displayForecast(response) {
                   </div>
                 </div>
             </div>`;
+    }
   });
+
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
